@@ -6,6 +6,7 @@ RUN apt update \
 	&& apt install -y curl tar sudo openssh-server openssh-client rsync openjdk-8-jdk 
 	
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64 PATH=$PATH:$JAVA_HOME/bin
+ENV TZ=Asia/Shanghai
 
 # add hadoop user and passwordless ssh 
 RUN groupadd hadoop \
@@ -13,8 +14,6 @@ RUN groupadd hadoop \
 	&& chmod u+w /etc/sudoers \
 	&& echo 'hadoop ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers \
 	&& chmod u-w /etc/sudoers
-	
-RUN echo "TZ='Asia/Shanghai'; export TZ" | tee -a /etc/profile
 
 USER hadoop
 RUN ssh-keygen -q -N "" -t rsa -f ~/.ssh/id_rsa \
