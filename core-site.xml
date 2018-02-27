@@ -1,0 +1,20 @@
+<configuration>
+        <property>
+             <name>hadoop.tmp.dir</name>
+             <value>file:/data/hadoop/tmp</value>
+             <description>Abase for other temporary directories.</description>
+        </property>
+        <property>
+             <name>fs.defaultFS</name>
+             <value>hdfs://master.spark:8020</value>
+        </property>
+        <!-- httpfs configure -->
+        <property>
+             <name>hadoop.proxyuser.hadoop.hosts</name>
+             <value>*</value>
+        </property>
+        <property>
+             <name>hadoop.proxyuser.hadoop.groups</name>
+             <value>*</value>
+        </property>
+</configuration>
